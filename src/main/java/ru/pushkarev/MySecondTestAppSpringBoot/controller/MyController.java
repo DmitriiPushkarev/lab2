@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.pushkarev.MySecondTestAppSpringBoot.exception.ValidationFailedException;
 import ru.pushkarev.MySecondTestAppSpringBoot.model.*;
+import ru.pushkarev.MySecondTestAppSpringBoot.service.ModifyRequestService;
 import ru.pushkarev.MySecondTestAppSpringBoot.service.ModifyResponseService;
 import ru.pushkarev.MySecondTestAppSpringBoot.service.ModifySystemTimeResponseService;
 import ru.pushkarev.MySecondTestAppSpringBoot.service.ValidationService;
@@ -26,10 +27,15 @@ public class MyController {
     private final ValidationService validationService;
     private final ModifyResponseService modifyResponseService;
 
+    private final ModifyRequestService modifyRequestService;
+
     @Autowired
-    public MyController(ValidationService validationService, @Qualifier("ModifySystemTimeResponseService") ModifySystemTimeResponseService modifySystemTimeResponseService) {
+    public MyController(ValidationService validationService,
+                        @Qualifier("ModifySystemTimeResponseService") ModifySystemTimeResponseService modifySystemTimeResponseService,
+                        ModifyRequestService modifyRequestService) {
         this.validationService = validationService;
         this.modifyResponseService = modifySystemTimeResponseService;
+        this.modifyRequestService = modifyRequestService;
     }
 
 
@@ -68,7 +74,7 @@ public class MyController {
         }
 
         modifyResponseService.modify(response);
-
+        modifyRequestService.modify(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

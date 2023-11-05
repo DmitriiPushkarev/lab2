@@ -25,7 +25,6 @@ public class Request {
 
     private Systems systemName;
 
-    @NotBlank
     private String systemTime;
 
     private String source;
