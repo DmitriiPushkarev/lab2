@@ -26,7 +26,6 @@ public class MyController {
 
     private final ValidationService validationService;
     private final ModifyResponseService modifyResponseService;
-
     private final ModifyRequestService modifyRequestService;
 
     @Autowired

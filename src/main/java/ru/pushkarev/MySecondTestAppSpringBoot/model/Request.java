@@ -15,26 +15,78 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class Request {
 
+    /***
+     * Уникальный идентификатор сообщения
+     */
     @NotBlank
     @Max(32)
     private String uid;
 
-    @NotBlank
+    /***
+     * Уникальный идентификатор операции
+     */
+    @NotBlank(message = "UID не может быть пустым")
     @Max(32)
     private String operationUid;
 
+    /***
+     * Имя системы
+     * отправителя
+     */
     private Systems systemName;
 
+    /***
+     * Время
+     * создания
+     * сообщения
+     */
     private String systemTime;
 
+    /***
+     * Наименование
+     * ресурса
+     */
     private String source;
 
+    /***
+     * Роль в команде
+     */
+    private Positions position;
+    /***
+     * Зарплата
+     */
+    private Double salary;
+    /***
+     * Бонус
+     */
+    private Double bonus;
+    /***
+     * Дней отработано
+     */
+    private Integer workDays;
+
+    /***
+     * Уникальный
+     * идентификатор
+     * коммуникации
+     */
     @Min(1)
     @Max(100000)
     private int communicationId;
 
+    /***
+     * Уникальный
+     * идентификатор
+     * шаблона
+     */
     private int templateId;
+    /***
+     * Код продукта
+     */
     private int productionCode;
+    /***
+     * Смс код
+     */
     private int smsCode;
 
     @Override
